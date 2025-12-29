@@ -1,14 +1,8 @@
-const express = require("express");
-const { default: ENV } = require("./config/env");
-const app = express();
-const port = ENV.PORT
+import app from './app.js';
+import ENV from './config/env.js';
 
-app.use(express.json());
+const PORT = ENV.PORT || 5000;
 
-app.get("/", (req, res) => {
-    res.send("Hello World")
-})
-
-app.listen(port, ()=>{
-    console.log(`app listening on port ${port}`)
-})
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
